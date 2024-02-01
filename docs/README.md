@@ -1,3 +1,5 @@
+
+# NODE
 ###### Heading level 6
 ##### Heading level 5
-zzdsd
+![Alt text](img/main_picture.jpg)
