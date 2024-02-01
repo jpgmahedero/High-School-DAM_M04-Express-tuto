@@ -41,11 +41,18 @@ Here is an example of these REST CRUD routes:
 - Destroy: DELETE http://www.example.com/customer/3814
 
 Another simpler exmample
-3. Create: POST http://www.example.com/customers
+Create: POST http://www.example.com/customers
 ...inserts  **new** customer
 
+- Read: GET http://www.example.com/customers
+  ...get **all**  customers
+
 - Read: GET http://www.example.com/customers/3814
+...get  customer with id **3841**
 
 - Update: PUT http://www.example.com/customers/3814
+...updates  customer with id **3841**
+
 
 - Destroy: DELETE http://www.example.com/customer/3814
+  ...updates  customer with id **3841**
