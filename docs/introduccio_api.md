@@ -1,7 +1,7 @@
 # What is an API?
 
 API stands for Application Programming Interface.
-program that can be used by another program, in order to allow applications to communicate with each other.
+program that can be used by another program (from now on **client**), in order to allow applications to communicate with each other.
 
 An API allows the server and the client to communicate with each other and exchange information.
 
@@ -32,29 +32,23 @@ When we are dealing with an API resource. For example Customer. Each Client reso
 
 Here is an example of these REST CRUD routes:
 
-- Create: POST http://www.example.com/customers
 
-- Read: GET http://www.example.com/customers/3814
+- **Create**: POST http://www.example.com/customers
 
-- Update: PUT http://www.example.com/customers/3814
+  inserts  **new** customer
 
-- Destroy: DELETE http://www.example.com/customer/3814
+- **Read**: GET http://www.example.com/customers
 
-Another simpler exmample
-Create: POST http://www.example.com/customers
-...inserts  **new** customer
+  get **all**  customers
 
-- Read: GET http://www.example.com/customers
- 
-  ...get **all**  customers
+- **Read**: GET http://www.example.com/customers/3814
 
-- Read: GET http://www.example.com/customers/3814
+  get  customer with id **3841**
 
-...get  customer with id **3841**
+- **Update**: PUT http://www.example.com/customers/3814
 
-- Update: PUT http://www.example.com/customers/3814
-...updates  customer with id **3841**
+  updates  customer with id **3841**
 
+- **Destroy**: DELETE http://www.example.com/customer/3814
 
-- Destroy: DELETE http://www.example.com/customer/3814
-  ...updates  customer with id **3841**
+  updates  customer with id **3841**
