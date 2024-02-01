@@ -5,7 +5,7 @@
 
 - [Sessió 1 - NodeJS + Express part 1: Introduction](01_NodeJS_Express_part_1__Introduction.md)
 
-- What is an API?-
+- What is an API?
 - HTTP requests
 - REST architecture and CRUD routes conventions
 - Testing the CRUD Operations

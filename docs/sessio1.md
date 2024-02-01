@@ -11,15 +11,15 @@ An API allows the server and the client to communicate with each other and excha
 The action you want to take on the specified resource. Although nouns are also encountered, these methods are often referred to as HTTP verbs.
 Here are the most commonly used HTTP verbs / actions
 
-- GET: GET requests are only used to **retrieve** data.
+- GET:  requests are only used to **retrieve** data.
 
-- POST: GET requests are used to **send** new data.
+- POST:  requests are used to **send** new data.
 
-- PUT: PUT requests are used to **modify** data.
+- PUT:  requests are used to **modify** data.
 
-- PATCH: PATCH requests are used to **partially modify** data.
+- PATCH:  requests are used to **partially modify** data.
 
-- DELETE: DELETE requests **deletes** the specified data.
+- DELETE:  requests **deletes** the specified data.
 
 ## REST architecture and CRUD routes conventions
 
