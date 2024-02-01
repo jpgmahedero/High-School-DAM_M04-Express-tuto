@@ -52,3 +52,36 @@ Here is an example of these REST CRUD routes:
 - **Destroy**: DELETE http://www.example.com/customer/3814
 
   updates  customer with id **3841**
+
+
+## Test the CRUD Operations
+
+You can test the server using tools like [Postman](https://www.postman.com/) or command line tools like [curl](https://curl.se/docs/tutorial.html). 
+Here are some examples of how you might test each operation:
+
+Create
+
+```
+curl -X POST http://localhost:3000/items -H "Content-Type: application/json" -d '{"name 1":"Item 1"}' 
+```
+Read (All items)
+
+
+```
+curl -X GET http://localhost:3000/items
+```
+Read (Single item)
+
+```
+curl -X GET http://localhost:3000/items/1
+```
+Update
+
+```
+curl -X PUT http://localhost:3000/items/1 -H "Content-Type: application/json" -d "{\"name\":\"Updated Item 1\"}"
+```
+Delete
+
+```
+    curl -X DELETE http://localhost:3000/items/1
+```
