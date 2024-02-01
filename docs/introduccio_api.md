@@ -10,15 +10,15 @@ An API allows the server and the client to communicate with each other and excha
 The action you want to take on the specified resource. Although nouns are also encountered, these methods are often referred to as HTTP verbs.
 Here are the most commonly used HTTP verbs / actions
 
-- GET: GET requests are only used to retrieve data.
+- GET: GET requests are only used to **retrieve** data.
 
-- POST: GET requests are used to send new data.
+- POST: GET requests are used to **send** new data.
 
-- PUT: PUT requests are used to modify data.
+- PUT: PUT requests are used to **modify** data.
 
-- PATCH: PATCH requests are used to partially modify data.
+- PATCH: PATCH requests are used to **partially modify** data.
 
-- DELETE: DELETE requests deletes the specified data.
+- DELETE: DELETE requests **deletes** the specified data.
 
 ## REST architecture and CRUD routes conventions
 
@@ -33,6 +33,16 @@ When we are dealing with an API resource. For example Customer. Each Client reso
 Here is an example of these REST CRUD routes:
 
 - Create: POST http://www.example.com/customers
+
+- Read: GET http://www.example.com/customers/3814
+
+- Update: PUT http://www.example.com/customers/3814
+
+- Destroy: DELETE http://www.example.com/customer/3814
+
+Another simpler exmample
+3. Create: POST http://www.example.com/customers
+...inserts  **new** customer
 
 - Read: GET http://www.example.com/customers/3814
 
