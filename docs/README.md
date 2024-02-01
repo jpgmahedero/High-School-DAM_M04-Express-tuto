@@ -1,4 +1,5 @@
 
+[Javascript basics](javscript%20basics.md)
 # NODE
 ![Alt text](img/main_picture.jpg)
 ##  Creating a new application
