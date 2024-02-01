@@ -1,16 +1,16 @@
 ## DAM 1 - M4 - Llenguatges de marques - UF2
-- [Javascript basics](javascript_basics.md)
+- [Javascript basics](extras/javascript_basics.md)
 
 
 
-- [Sessió 1 - NodeJS + Express part 1: Introduction](01_NodeJS_Express_part_1__Introduction.md)
+- [Sessió 1 - NodeJS + Express part 1: Introduction](Sesion1/01_NodeJS_Express_part_1__Introduction.md)
 
 
 - What is an API?
 - HTTP requests
 - REST architecture and CRUD routes conventions
 - Testing the CRUD Operations
-- [NODE and Express](node1_introduccio.md)
+- [NODE and Express](Sesion1/what_is_node_express_first_app.md)
 - First CRUD 
 
 <!-- 
