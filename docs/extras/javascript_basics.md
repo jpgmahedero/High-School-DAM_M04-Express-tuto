@@ -1,5 +1,14 @@
 # JAVASCRIPT  BASICS
-## Declaring data: using var vs let vs const
+
+- [Declaring data](#declaring-data): **var** vs **let** vs **const**
+- [Arrow functions](#arrow-functions): modern way of declaring functions
+- [Async and Await](#async-and-await): asynchronous propgraming
+- [Module exports](#module-exports): modularizing code
+
+
+
+## Declaring data
+
 #### VAR: 
     define variables
 
@@ -92,6 +101,8 @@ param => {
 
 ```
 
+
+
 ### Common use in express routes:
 
 - Traditional way
@@ -169,3 +180,9 @@ In this example:
     It's important to handle errors properly in async functions using try...catch blocks to ensure that the Express server can handle exceptions and not crash unexpectedly.
 *** 
 ## Module exports
+
+Importing and creating modules
+
+A module is a JavaScript library/file that you can import into other code using Node's require() function. Express itself is a module, as are the middleware and database libraries that we use in our Express applications.
+
+The code below shows how we import a module by name, using the Express framework as an example. First we invoke the require() function, specifying the name of the module as a string ('express'), and calling the returned object to create an Express application. We can then access the properties and functions of the application object.
