@@ -1,8 +1,9 @@
 ## DAM 1 - M4 - Llenguatges de marques - UF2
 - [Javascript basics](extras/javascript_basics.md)
-  - declaring data: using var vs let vs const
-  - arrow functions
-  - asynchronous functions: using _**async**_ and _**await**_
+  - [Declaring data](extras/javascript_basics.md#declaring-data): **var** vs **let** vs **const**
+  - [Arrow functions](extras/javascript_basics.md#arrow-functions): modern way of declaring functions
+  - [Async and Await](extras/javascript_basics.md#async-and-await): asynchronous propgraming
+  - [Module exports](extras/javascript_basics.md#importing-and-creating-modules): modularizing code
 
 - [What are Node js and Express. First application](what_is_node_express_first_app.md)
 

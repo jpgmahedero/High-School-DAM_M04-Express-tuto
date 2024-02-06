@@ -3,7 +3,7 @@
 - [Declaring data](#declaring-data): **var** vs **let** vs **const**
 - [Arrow functions](#arrow-functions): modern way of declaring functions
 - [Async and Await](#async-and-await): asynchronous propgraming
-- [Module exports](#module-exports): modularizing code
+- [Module exports](#importing-and-creating-modules): modularizing code
 
 
 
@@ -179,10 +179,65 @@ In this example:
     #### Handling errors
     It's important to handle errors properly in async functions using try...catch blocks to ensure that the Express server can handle exceptions and not crash unexpectedly.
 *** 
-## Module exports
+## Importing and creating modules
 
-Importing and creating modules
 
-A module is a JavaScript library/file that you can import into other code using Node's require() function. Express itself is a module, as are the middleware and database libraries that we use in our Express applications.
+
+A module is a JavaScript library/file that you can import into other code using Node's require() function. 
+
+Express itself is a module, as are the middleware and database libraries that we use in our Express applications.
 
 The code below shows how we import a module by name, using the Express framework as an example. First we invoke the require() function, specifying the name of the module as a string ('express'), and calling the returned object to create an Express application. We can then access the properties and functions of the application object.
+
+```angular2html
+const express = require("express");
+const app = express();
+app.(...)
+
+```
+
+### creating your own modules
+Create your own module helps modularizing your application as it becomes biggger
+
+### Exporting in Express
+
+In Express, you often create modules for routes, middleware, or utility functions. To make functions, objects, or primitives available to other files, you use module.exports or exports.
+
+Example for encapsulating user routes into a **router**
+```angular2html
+// userRoutes.js
+const express = require('express');
+const router = express.Router();
+
+router.get('/users', (req, res) => {
+    // Handle GET request for the /users route
+});
+
+module.exports = router;
+
+```
+
+In this example, module.exports = router; makes the router available for import in other files.
+
+### Importing in Express
+
+To use the exported modules in another file, you use **require()** to import them.
+
+Example: Importing an Express Router
+```angular2html
+// app.js
+const express = require('express');
+const app = express();
+const userRoutes = require('./userRoutes');
+
+app.use('/api', userRoutes);
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+```
+
+All routes begginng with /api will be handled into user.js file. 
+
+Sinc user.js is used with /api route /api/users route is the final route for handling GET requests for users 
