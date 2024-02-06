@@ -146,3 +146,6 @@ $ node bin/www
 ## 4. VIEW THE APPLICATION
 Application runs on port set in **bin/www** file which default's value is 3000
 ![Firefox fresh start](/home/jose/Documents/dev/node/DAM_M04/docs/img/firefox_fresh_start.png)
+
+## 5. LOGS
+TO DO
