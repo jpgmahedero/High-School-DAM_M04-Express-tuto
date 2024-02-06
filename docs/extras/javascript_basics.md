@@ -115,6 +115,7 @@ app.get('/users', function(req, res) {
 ```
 
 - Arrow functions (modern js) way
+
 ```
 app.get('/users', (req, res)=> {
     // Logic to handle the request
