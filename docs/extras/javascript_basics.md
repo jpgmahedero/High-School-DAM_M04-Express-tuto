@@ -254,4 +254,6 @@ app.listen(3000, () => {
 
 All routes beginning with /api will be handled into user.js file. 
 
-Since user.js is used with /api route /api/users and /api/users/:id routes becomes the final route for handling GET requests for users 
+Since user.js is used with /api_
+- route GET  /api/users and GET /api/users/:id routes becomes the final route for handling GET requests for users
+- route POST /api/users routes becomes the final route for handling POST requests for users
