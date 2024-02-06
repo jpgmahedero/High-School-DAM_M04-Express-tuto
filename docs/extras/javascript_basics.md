@@ -74,8 +74,8 @@ const has all the properties that are the same as the let keyword, except the us
 An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage:
 
 - Arrow functions don't have their own bindings to this, arguments, or super, and should not be used as methods.
--  Arrow functions cannot be used as constructors. Calling them with new throws a TypeError. They also don't have access to the new.target keyword.
--   Arrow functions cannot use yield within their body and cannot be created as generator functions.
+- Arrow functions cannot be used as constructors. Calling them with new throws a TypeError. They also don't have access to the new.target keyword.
+- Arrow functions cannot use yield within their body and cannot be created as generator functions.
 
 ### syntax
 ```angular2html
@@ -177,8 +177,10 @@ In this example:
 2. Error handling becomes straightforward with try...catch blocks.
 3. Reduces the "callback hell" scenario that can occur with complex nested callbacks.
 
-    #### Handling errors
-    It's important to handle errors properly in async functions using try...catch blocks to ensure that the Express server can handle exceptions and not crash unexpectedly.
+#### Handling errors
+
+   It's important to handle errors properly in async functions using try...catch blocks to ensure that the Express server can handle exceptions and not crash unexpectedly.
+
 *** 
 ## Importing and creating modules
 
@@ -198,7 +200,7 @@ app.(...)
 ```
 
 ### creating your own modules
-Create your own module helps modularizing your application as it becomes biggger
+Create your own module helps modularize your application as it becomes bigger
 
 ### Exporting in Express
 
@@ -250,6 +252,6 @@ app.listen(3000, () => {
 
 ```
 
-All routes begginng with /api will be handled into user.js file. 
+All routes beginning with /api will be handled into user.js file. 
 
 Since user.js is used with /api route /api/users and /api/users/:id routes becomes the final route for handling GET requests for users 
