@@ -214,11 +214,22 @@ router.get('/users', (req, res) => {
     // Handle GET request for the /users route
 });
 
+router.get('/users/:id', (req, res) => {
+    // Handle GET request for the /users/id route
+});
+
+router.post('/users/', (req, res) => {
+    // Handle POST request for the /users/id route
+});
+
 module.exports = router;
 
 ```
 
 In this example, module.exports = router; makes the router available for import in other files.
+
+This structure separates the **routing logic** into its own module and keeps the main application file (app.js) clean and focused on setup and configuration.
+
 
 ### Importing in Express
 
@@ -241,4 +252,4 @@ app.listen(3000, () => {
 
 All routes begginng with /api will be handled into user.js file. 
 
-Sinc user.js is used with /api route /api/users route is the final route for handling GET requests for users 
+Since user.js is used with /api route /api/users and /api/users/:id routes becomes the final route for handling GET requests for users 
