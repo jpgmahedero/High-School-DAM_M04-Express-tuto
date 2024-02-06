@@ -1,7 +1,7 @@
 ## DAM 1 - M4 - Llenguatges de marques - UF2
 - [Javascript basics](extras/javascript_basics.md)
 
-- [What are Node js and Express. Firts application](what_is_node_express_first_app.md)
+- [What are Node js and Express. First application](what_is_node_express_first_app.md)
 
 - [Sessió 1 - NodeJS + Express part 1: Introduction](Sesion1/01_NodeJS_Express_part_1__Introduction.md)
 
