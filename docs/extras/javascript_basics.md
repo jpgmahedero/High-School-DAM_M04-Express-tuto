@@ -14,9 +14,11 @@
     define variables
 
 An improved version of the var keyword. It is introduced in the ES6 or EcmaScript 2015. These variables has the block scope. It can’t be accessible outside the particular code block ({block}).
+
 **scope**:
 - inside a function block: it is available and can be accessed only within that { } block.
 example:
+
 ```angular2html
 let a = 10;
 function f() {
@@ -50,14 +52,15 @@ const has all the properties that are the same as the let keyword, except the us
 **scope**:
 - inside a function block: it is available and can be accessed only within that { } block.
 
-| var                                                                           | let                                                                                        | const                                                                                          |   |   |   |   |   |   |   |
-|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|---|---|---|---|---|---|---|
-| The scope of a var variable is functional or global scope.                    | The scope of a let variable is block scope.                                                | The scope of a const variable is block scope.                                                  |   |   |   |   |   |   |   |
-| It can be updated and re-declared in the same scope.                          | It can be updated but cannot be re-declared in the same scope.                             | It can neither be updated or re-declared in any scope.                                         |   |   |   |   |   |   |   |
-| It can be declared without initialization.                                    | It can be declared without initialization.                                                 | It cannot be declared without initialization.                                                  |   |   |   |   |   |   |   |
-| It can be accessed without initialization as its default value is “undefined”. | It cannot be accessed without initialization otherwise it will give ‘referenceError’.      | It cannot be accessed without initialization, as it cannot be declared without initialization. |   |   |   |   |   |   |   |
-| These variables are hoisted.                                                  | These variables are hoisted but stay in the temporal dead zone untill the initialization.  | These variables are hoisted but stays in the temporal dead zone until the initialization       |   |   |   |   |   |   |   |
+| var                                                                           | let                                                                                        | const                                                                                          |
+|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| The scope of a var variable is functional or global scope.                    | The scope of a let variable is block scope.                                                | The scope of a const variable is block scope.                                                  |
+| It can be updated and re-declared in the same scope.                          | It can be updated but cannot be re-declared in the same scope.                             | It can neither be updated or re-declared in any scope.                                         |
+| It can be declared without initialization.                                    | It can be declared without initialization.                                                 | It cannot be declared without initialization.                                                  |
+| It can be accessed without initialization as its default value is “undefined”. | It cannot be accessed without initialization otherwise it will give ‘referenceError’.      | It cannot be accessed without initialization, as it cannot be declared without initialization. |
+| These variables are hoisted.                                                  | These variables are hoisted but stay in the temporal dead zone untill the initialization.  | These variables are hoisted but stays in the temporal dead zone until the initialization       |
 
+*** 
 ## Arrow functions
 An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences and deliberate limitations in usage:
 
@@ -99,6 +102,7 @@ app.get('/users', function(req, res) {
     res.json(users);
 });
 ```
+
 - Arrow functions (modern js) way
 ```
 app.get('/users', (req, res)=> {
@@ -108,6 +112,60 @@ app.get('/users', (req, res)=> {
 });
 
 ```
+
+***
+
 ## Async and Await
 
+### async 
+
+- The async keyword is used to declare an asynchronous function, which returns an implicit Promise as its result. 
+- An async function can contain zero or more await expressions.
+
+### await Keyword
+
+- The await keyword is used inside an async function to pause the execution until the Promise is settled (either resolved or rejected).
+- **It can only be used inside an async function.**
+- When used with a Promise, it makes the asynchronous code look and behave like synchronous code.
+
+### Usage in Express
+
+```
+
+const express = require('express');
+const app = express();
+
+app.get('/data', async (req, res) => {
+    try {
+        const data = await fetchData(); // Assume fetchData returns a Promise
+        res.json(data);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+// This is a SLOW  function that would return a Promise
+async function fetchData() {
+    // ...fetch data (e.g., from a database or API)
+}
+
+app.listen(3000, () => console.log('Server is running on port 3000'));
+```
+
+In this example:
+
+- The route handler for '/data' is an async function, allowing the use of await within it.
+- await fetchData() pauses the execution of the async function until fetchData (which returns a Promise) is resolved or rejected.
+- If the Promise resolves, the result is returned and execution continues.
+- If the Promise is rejected, the error is caught by the try...catch block and an appropriate response is sent.
+
+### Benefits of using async and await in Express:
+
+1. Cleaner and more readable code, especially for handling asynchronous operations.
+2. Error handling becomes straightforward with try...catch blocks.
+3. Reduces the "callback hell" scenario that can occur with complex nested callbacks.
+
+    #### Handling errors
+    It's important to handle errors properly in async functions using try...catch blocks to ensure that the Express server can handle exceptions and not crash unexpectedly.
+*** 
 ## Module exports
