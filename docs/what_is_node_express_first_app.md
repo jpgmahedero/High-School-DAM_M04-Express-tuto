@@ -38,7 +38,10 @@ $ npm install express
 
 And start coding!
 
-Here you have an unltra basic template:
+Here you have an ultra basic template. Open your web browser and point it to 
+```angular2html
+http://localhost:3000
+```
 ```angular2html
 const express = require("express")
 const app = express()

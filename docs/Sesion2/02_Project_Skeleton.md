@@ -32,6 +32,8 @@ You can create it by hand or automate it with some presettings
 ## 1. Installation
 
 First, you need to install the generator globally using npm (Node Package Manager):
+
+
 ```angular2htmlnpm install -g express-generator
 npm install -g express-generator
 ```
@@ -141,14 +143,14 @@ $ node bin/www
 ```
 ### Webstorm
 
-![Play project buton](/home/jose/Documents/dev/node/DAM_M04/docs/img/play_button.png)
+![Play project buton](../img/play_button.png)
 
 ***
 
 ## 4. VIEW THE APPLICATION
 Application runs on port set in **bin/www** file which default's value is 3000
 
-![Firefox fresh start](/home/jose/Documents/dev/node/DAM_M04/docs/img/firefox_fresh_start.png)
+![Firefox fresh start](../img/firefox_fresh_start.png)
 
 
 ***

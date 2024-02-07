@@ -31,9 +31,8 @@ example:
 ```angular2html
 let a = 10;
 function f() {
-if (true) {
-let b = 9
-
+    if (true) {
+        let b = 9
         // It prints 9
         console.log(b);
     }
@@ -42,10 +41,10 @@ let b = 9
     // defined in if block
     console.log(b);
 }
+
 f()
 
-// It prints 10
-console.log(a)
+console.log(a) // It prints 10
 ```
 even if **b** has been defined **inside** a function, it can’t be accessible outside the particular code block
 
