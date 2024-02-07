@@ -7,7 +7,7 @@
 
 - [What are Node js and Express. First application](what_is_node_express_first_app.md)
 
-- [Sessió 1 - NodeJS + Express part 1: Introduction](Sesion1/01_NodeJS_Express_part_1__Introduction.md)
+- [NodeJS + Express part 1: Introduction](Sesion1/01_NodeJS_Express_part_1__Introduction.md)
 
   - What is an API?
   - HTTP requests
@@ -15,12 +15,9 @@
   - Testing the CRUD Operations
   - First CRUD 
 
-<!-- 
- [Sessió 2 -  NodeJS + Express part 1: Introduction](01%20NodeJS_Express_part_1-%20Introduction%20.md)
-- What is an API?-
-- HTTP requests
-- REST architecture and CRUD routes conventions
-- Testing the CRUD Operations
-- First CRUD
-
--->
+ 
+-  [NodeJS + Express part 2: Project Skeleton](Sesion2/02_Project_Skeleton.md)
+   - Installation
+   - Generating an Application
+   - Install dependencies 
+   - Executing the application

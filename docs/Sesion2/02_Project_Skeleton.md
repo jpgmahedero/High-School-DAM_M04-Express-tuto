@@ -1,5 +1,5 @@
 #  NodeJS + Express part 2: Creating a skeleton website
-## 
+## Full project
 ```angular2html
 /your-app-name
 |-- /node_modules
@@ -35,6 +35,9 @@ First, you need to install the generator globally using npm (Node Package Manage
 ```angular2htmlnpm install -g express-generator
 npm install -g express-generator
 ```
+
+*** 
+
 ## 2. Generating an Application
 
 Once installed, you can create a new Express application by running:
@@ -64,11 +67,8 @@ express --help
     -h, --help           output usage information
 
 ```
-### Call the generator:
-```angular2html
+### GENERATE FROM COMMAND LINE:
 
-```
-**Output:**
 ```angular2html
 express --force  --view ejs my_app
 
@@ -100,7 +100,7 @@ express --force  --view ejs my_app
 
 ```
 
-## WEBSTORM
+## GENERATE FROM WEBSTORM
 ![Alt text](/home/jose/Documents/dev/node/DAM_M04/docs/img/application_generator.png)
 
 ## FINAL STRUCTURE
@@ -124,7 +124,7 @@ my_app/
 
 ```
 
-
+***
 
 ## 3. INSTALL DEPENDENCIES
 All dependecies listed on project.json must be installed:
@@ -133,7 +133,7 @@ $ cd my_app
 $ npm install
 ```
 
-## 4. EXECUTE THE APPLICATION
+## 4. EXECUTING THE APPLICATION
 ### Command line
 ```angular2html
 $ cd my_application
@@ -143,9 +143,19 @@ $ node bin/www
 
 ![Play project buton](/home/jose/Documents/dev/node/DAM_M04/docs/img/play_button.png)
 
+***
+
 ## 4. VIEW THE APPLICATION
 Application runs on port set in **bin/www** file which default's value is 3000
+
 ![Firefox fresh start](/home/jose/Documents/dev/node/DAM_M04/docs/img/firefox_fresh_start.png)
 
+
+***
+
 ## 5. LOGS
-TO DO
+The easiest way for logging messages is 
+```angular2html
+console.log(...)
+```
+Output is seen in  terminal where server is run
