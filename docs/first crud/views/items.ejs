@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+</head>
+<body>
+<h1> Items list</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>job</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% items.forEach( function (item){ %>
+        <tr>
+            <td> <%= item.id %></td>
+            <td> <%= item.name %></td>
+            <td> <%= item.job %></td>
+        </tr>
+    <% } ) %>
+
+    </tbody>
+</table>
+</body>
+</html>
