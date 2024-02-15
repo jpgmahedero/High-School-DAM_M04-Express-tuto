@@ -6,6 +6,7 @@
   - [Module exports](extras/javascript_basics.md#importing-and-creating-modules): modularizing code
 
 - [What are Node js and Express. First application](what_is_node_express_first_app.md)
+- - [What are Node js and Express. First CRUD](first%20crud)
 
 - [NodeJS + Express part 1: Introduction](Sesion1/01_NodeJS_Express_part_1__Introduction.md)
 
