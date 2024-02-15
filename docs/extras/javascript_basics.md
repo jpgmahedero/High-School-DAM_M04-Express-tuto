@@ -4,7 +4,7 @@
 - [Arrow functions](#arrow-functions): modern way of declaring functions
 - [Async and Await](#async-and-await): asynchronous propgraming
 - [Module exports](#importing-and-creating-modules): modularizing code
-
+- [Removing elements from an array](https://www.freecodecamp.org/news/how-to-remove-an-element-from-a-javascript-array-removing-a-specific-item-in-js/#remove-an-element-at-any-index-with-splice)
 
 
 ## Declaring data
