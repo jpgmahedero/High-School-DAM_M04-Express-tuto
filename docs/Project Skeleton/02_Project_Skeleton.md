@@ -49,7 +49,7 @@ express --help
 ```
 will output:
 
-```angular2html
+```
 express --help
 
   Usage: express [options] [dir]
@@ -67,8 +67,8 @@ express --help
         --git            add .gitignore
     -f, --force          force on non-empty directory
     -h, --help           output usage information
-
 ```
+
 ### GENERATE FROM COMMAND LINE:
 
 ```angular2html

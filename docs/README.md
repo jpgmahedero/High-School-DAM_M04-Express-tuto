@@ -5,6 +5,8 @@
   - [Arrow functions](extras/javascript_basics.md#arrow-functions): modern way of declaring functions
   - [Async and Await](extras/javascript_basics.md#async-and-await): asynchronous propgraming
   - [Module exports](extras/javascript_basics.md#importing-and-creating-modules): modularizing code
+  - [Module exports](extras/javascript_basics.md#): modularizing code
+  - [Removing elements from an array](https://www.freecodecamp.org/news/how-to-remove-an-element-from-a-javascript-array-removing-a-specific-item-in-js/#remove-an-element-at-any-index-with-splice)
 
 - [What are Node js and Express. First application](what_is_node_express_first_app.md)
 <!-- - [What are Node js and Exprca less. First CRUD](https://github.com/jpgmahedero/DAM_M04/tree/main/docs/first%20crud)
@@ -24,3 +26,7 @@
    - Generating an Application
    - Install dependencies 
    - Executing the application
+   
+-  [NodeJS + Express part 3: EJS Templating Engine](EJS/ejs.md)
+    - official documentation
+    - how to...
