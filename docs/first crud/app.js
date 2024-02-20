@@ -51,13 +51,8 @@ app.post('/api/items',(req, res)=>{
 
 // WEB ENDPOINTS //////////////////////////
 app.get('/', (req, res) => {
-    let html = '<h1>Web de items</h1><br>' +
-        '<a href="/items">Get all items</a> <br>' +
-        '<a href="/insert_items">Insert items</a>'
-
-    // should change it to  render index.ejs
-
-    res.send(html)
+    const options = {title:' WEB DE ITEMS'}
+    res.render('index', options)
 });
 
 
@@ -73,7 +68,7 @@ app.get('/items', (req, res) => {
 
 // INsert items: renders insertion temmplate
 // then results are sent to
-app.get('/insert_items', (req,res)=>{
+app.get('/items/insert', (req,res)=>{
     const options ={
         title: 'insert item'
     }
@@ -81,11 +76,48 @@ app.get('/insert_items', (req,res)=>{
     res.render('insert_item',options)
 });
 
+function getNewId(items){
+    let maxId = 0
+
+    for (const item of items) {
+        if (item.id > maxId){
+            maxId = item.id
+        }
+    }
+    return maxId +1
+
+
+}
+
 app.post('/items', (req, res) => {
 
     let params  = req.body
+    // id is NOT provided by user but CALCULATED upon items length
+    params.id = getNewId(items)//items.length + 1; // Add an `id` field to `params`
+
+
+    items.push(params)  // Insert in our "db" which is an array
+                        // y so we use .push() to add an element to items
+    res.redirect('/items')
 
 })
+app.delete('/items/:id', function(req, res) {
+    const id = parseInt(req.params.id);
+    let foundIndex = -1;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].id === id) {
+            foundIndex = i;
+            break;
+        }
+    }
+    if (foundIndex === -1) res.status(404).send('Item not found');
+    else {
+        items = items.filter(function(item, index) {
+            return index !== foundIndex;
+        });
+        res.status(204).send();
+    }
+});
 
 
 // catch 404 and forward to error handler
