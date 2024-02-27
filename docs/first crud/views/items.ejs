@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <%- include('partials/head'); %>
+
+</head>
+<body>
+
+<%- include('partials/navigation') %>
+
 </head>
 <body>
 <h1> Items list</h1>
@@ -23,33 +27,61 @@
             <td><%= item.id %></td>
             <td><%= item.name %></td>
             <td><%= item.job %></td>
-            <td><a href="#" class="delete-link" data-item-id="<%= item.id %>">Delete</a></td>
+            <td><a href="#" class="delete-link" data-item-id="<%= item.id %>">Delete</a>
+                <a href="/items/update/<%= item.id %>">Update</a></td>
         </tr>
     <% }); %>
-
 
     </tbody>
 </table>
 <script>
-    $(document).ready(function() {
-        $('.delete-link').click(function(e) {
+    $(document).ready(function () {
+        $('.delete-link').click(async function (e) {
             e.preventDefault(); // Prevent the default link action
             var itemId = $(this).data('item-id'); // Get the item ID from the data-item-id attribute
 
-            $.ajax({
-                url: '/items/' + itemId, // Your endpoint
-                type: 'DELETE',
-                success: function(result) {
-                    // Handle success, such as reloading the page or removing the item row from the table
-                    window.location.reload();
-                },
-                error: function(xhr, status, error) {
-                    // Handle error
-                    console.log("Error: " + status + " " + error);
-                }
-            });
+            try {
+                // Await the completion of the AJAX request
+                await $.ajax({
+                    url: '/items/' + itemId, // Your endpoint
+                    type: 'DELETE',
+                });
+
+                // Handle success, such as reloading the page or removing the item row from the table
+                //res.status(200).redirect('/')
+                window.location.reload();
+
+            } catch (error) {
+                // Handle error
+                console.log("Error: " + error.status + " " + error.statusText);
+            }
         });
+        /*
+                ('.update-link').click(async function(e) {
+                    e.preventDefault(); // Prevent the default link action
+                    var itemId = $(this).data('item-id'); // Get the item ID from the data-item-id attribute
+
+                    try {
+                        // Await the completion of the AJAX request
+                        await $.ajax({
+                            url: '/items/' + itemId, // Your endpoint
+                            type: 'PUT',
+                        });
+
+                        // Handle success, such as reloading the page or removing the item row from the table
+                        window.location.reload();
+
+                    } catch (error) {
+                        // Handle error
+                        console.log("Error: " + error.status + " " + error.statusText);
+                    }
+                });
+
+        */
+
+
     });
+
 </script>
 
 </body>

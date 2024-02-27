@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,22 +23,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 
 let items = [
-    {id: 1, name: "Tinson", job: "boxer" },
-    {id: 2, name: "Mc Laud", job:"warrior"},
+    {id: 1, name: "Tinson", job: "boxer"},
+    {id: 2, name: "Mc Laud", job: "warrior"},
     {id: 3, name: "Chiquito", job: "comico"},
 ];
+
+
+const knex = require('knex')({
+    client: 'sqlite3', // or 'better-sqlite3'
+    connection: {
+        filename: "./mydb.sqlite"
+    }
+});
 
 
 // API ENDPOINTS //////////////////////////////
 
 
-app.get('/api/items',(req, res)=>{
+app.get('/api/items', (req, res) => {
 
     res.status(200).json(items) // 201 HTTP CODE: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
 });
 
-app.post('/api/items',(req, res)=>{
-    let params = req.body; // Assuming this has `role` and `name`
+// INSERT
+
+app.post('/api/items', (req, res) => {
+    let params = req.body; // Assuming parameters has `role` and `name` are present in the form
 
     // id is NOT provided by user but CALCULATED upon items length
     params.id = items.length + 1; // Add an `id` field to `params`
@@ -49,10 +59,37 @@ app.post('/api/items',(req, res)=>{
     res.status(201).json(params) // 201 HTTP CODE: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
 })
 
+// UPDATE
+
+function findItemIndex  (id)  {
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].id== id){
+
+            return  i
+        }
+    }
+    return -1;
+};
+app.put('/api/items/:id', (req, res) => {
+    const  id = req.params.id
+
+    const index = findItemIndex(id)
+    if (index == -1){
+        res.status(404).send('not foounf')
+    }
+    let {name, job} = req.body; // Assuming parameters has `role` and `name` are present in the form
+    let params = req.body;
+
+    //items[index] = {id, ...params}
+    items[index] = {id, name, job}
+                        // y so we use .push() to add an element to items
+    res.status(201).send(items[index]) // 201 HTTP CODE: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
+})
+
 // WEB ENDPOINTS //////////////////////////
 app.get('/', (req, res) => {
-    const options = {title:' WEB DE ITEMS'}
-    res.render('index', options)
+    const options = {title: ' WEB DE ITEMS'}
+    res.render('index',options) //, options)
 });
 
 
@@ -60,38 +97,38 @@ app.get('/', (req, res) => {
 app.get('/items', (req, res) => {
 
     // options are passed directly as a javascript object
-    res.render('items',{
-        title:'ITEMS',
-        items:items
+    res.render('items', {
+        title: 'ITEMS',
+        items: items
     })
 })
 
-// INsert items: renders insertion temmplate
+// Insert items: renders insertion template
 // then results are sent to
-app.get('/items/insert', (req,res)=>{
-    const options ={
+app.get('/items/insert', (req, res) => {
+    const options = {
         title: 'insert item'
     }
     // options aree passed from  an already defined value
-    res.render('insert_item',options)
+    res.render('insert_item', options)
 });
 
-function getNewId(items){
+function getNewId(items) {
     let maxId = 0
 
     for (const item of items) {
-        if (item.id > maxId){
+        if (item.id > maxId) {
             maxId = item.id
         }
     }
-    return maxId +1
+    return maxId + 1
 
 
 }
 
 app.post('/items', (req, res) => {
 
-    let params  = req.body
+    let params = req.body
     // id is NOT provided by user but CALCULATED upon items length
     params.id = getNewId(items)//items.length + 1; // Add an `id` field to `params`
 
@@ -101,7 +138,7 @@ app.post('/items', (req, res) => {
     res.redirect('/items')
 
 })
-app.delete('/items/:id', function(req, res) {
+app.delete('/items/:id', function (req, res) {
     const id = parseInt(req.params.id);
     let foundIndex = -1;
     for (let i = 0; i < items.length; i++) {
@@ -112,11 +149,50 @@ app.delete('/items/:id', function(req, res) {
     }
     if (foundIndex === -1) res.status(404).send('Item not found');
     else {
-        items = items.filter(function(item, index) {
+        items = items.filter(function (item, index) {
             return index !== foundIndex;
         });
         res.status(204).send();
     }
+});
+
+// Insert items: renders insertion template
+// then results are sent to
+app.get('/items/update/:id', (req, res) => {
+
+    const  id = req.params.id
+
+    const index = findItemIndex(id)
+    if (index == -1){
+        res.status(404).send('not found')
+    }
+    let item = items[index]
+    const options = {
+        title: 'insert item',
+        item: item
+    }
+    console.log('update id:',id, 'options',options)
+    res.status(200).render('update_item', options)
+
+
+});
+
+app.post('/items/update/',(req, res)=>{
+    const {id, name, job} = req.body; // Assuming parameters has `role` and `name` are present in the form
+
+    const index = findItemIndex(id)
+    if (index == -1){
+        res.status(404).send('not foounf')
+    }
+
+    let params = req.body;
+    console.log(params)
+
+    //items[index] = {id, ...params}
+    items[index] = {id, name, job}
+    // y so we use .push() to add an element to items
+    res.status(201).redirect('/items')
+
 });
 
 

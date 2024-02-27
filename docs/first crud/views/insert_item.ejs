@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <%- include('partials/head'); %>
 </head>
+<body>
+
+<h1>Web de items</h1>
+<%- include('partials/navigation') %>
+
 <body>
 <h1> INSERT ITEM</h1>
 <form action="/items" method="post">
