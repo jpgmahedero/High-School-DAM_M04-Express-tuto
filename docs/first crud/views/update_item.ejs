@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<h1>Web de items</h1>
+<%- include('partials/navigation') %>
+
+
+<h1> UPDATE ITEM </h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <form action="/items/update" method="post">
+
+
+                <label for="input_name">Item name</label>
+                <input type="text" name="name" id="input_name" value="<%= item.name %>">
+
+                <label for="job">Job</label>
+                <input type="text" name="job" id="job" value="<%= item.job %>">
+
+
+                <input type="hidden" name="id"  value="<%= item.id %>">
+
+                <input type="submit" value="update">
+            </form>
+        </div>
+        <div class="col"></div>
+
+        <footer>
+            <%- include('partials/footer'); %>
+        </footer>
+
+        <%- include('partials/extra_scripts'); %>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
