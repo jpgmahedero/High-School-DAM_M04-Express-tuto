@@ -135,34 +135,65 @@ pp.delete('/groups/:id', async (req, res)=> {
 ```
 
 ### UPDATE
-```angular2html
+Show update fropm when accessed via GET
+Firs check elemenn to be updated exists
+Then show updating form
+```
 app.get('/albums/update/:id', async (req, res) => {
-    
+
     // id should be found . Otherwise an error must be returned
     try {
+        // get id from rpoute params
         const id = req.params.id;
 
-        // Get the actual Album being updated
-        // SELECT 'Albums.id', 'title', 'image', 'idGroup', 'description'
-        // FROM Albums
-        // WHERE Albums.id = id
-        const albums = await knex('Albums')
-            .select('Albums.id', 'title', 'image', 'idGroup', 'description').where('id', '=', id)
+        const albums = await knex('Albums').where({id})
+        
+        // this should not happen since it comes from a view
+        // showing already existing album but we should protect against
+        if (albums.length == 0) {
+            // An error view should be rendered
+            res.status(404).send('Item not found');
+        }
 
-        // Get all Groups in order to make them avilable
+        // get all groups to offer changing groups
         const groups = await knex('Groups')
-
         const options = {
-            title: 'Group List',
-            album: albums[0], // albums is a list
-            groups: groups
+            title: 'Update album',
+            album:albums[0],
+            groups:groups
         }
         res.render('update_album', options)
     } catch (e) {
+
         console.log(e)
-        res.status(500).send('ERROR')
+        res.status(500).send('ERROR'+ e.message)
     }
-})
-
+});
 ```
+Receive parameters from update FORM
 
+```angular2html
+app.post('/albums/update/', async (req, res) => {
+const {id, title, image, idGroup, description} = req.body; // Assuming parameters has `role` and `name` are present in the form
+
+    try {
+        const album = await knex('Albums').where({id}).first()
+        if (!album) {
+            res.status(404).send('not found')
+        }
+        const updateCount = await knex('albums')
+            .update({id, title, image, idGroup, description})
+            .where({id})
+
+        if (updateCount) {
+            res.status(201).redirect('/albums')
+        } else {
+            res.status(404).send({success: false, message: 'Group not found.'});
+        }
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).send({success: false, message: e.message});
+    }
+});
+```
