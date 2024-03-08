@@ -34,8 +34,9 @@
 </table>
 <script>
     $(document).ready(function () {
-        $('.delete-link').click(async function (e) {
+        $(".delete-link").click(async function (e) {
             e.preventDefault(); // Prevent the default link action
+
             var itemId = $(this).data('item-id'); // Get the item ID from the data-item-id attribute
 
             try {
@@ -47,6 +48,7 @@
 
                 // Handle success, such as reloading the page or removing the item row from the table
                 //res.status(200).redirect('/')
+
                 window.location.reload();
 
             } catch (error) {

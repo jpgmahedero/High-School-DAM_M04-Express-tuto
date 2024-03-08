@@ -30,3 +30,6 @@
 -  [NodeJS + Express part 3: EJS Templating Engine](EJS/ejs.md)
     - official documentation
     - how to...
+- [NodeJS + Express part 4: Knex SQL Builder](knex/knex.md)
+    - official documentation
+    - how to...

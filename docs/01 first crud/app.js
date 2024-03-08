@@ -31,6 +31,7 @@ let items = [
 
 
 
+
 // API ENDPOINTS //////////////////////////////
 
 
@@ -64,7 +65,7 @@ function findItemIndex  (id)  {
     }
     return -1;
 };
-app.put('/api/items/:id', (req, res) => {
+app.post('/api/items/:id', (req, res) => {
     const  id = req.params.id
 
     const index = findItemIndex(id)

@@ -76,6 +76,31 @@ app.get('/groups', async (req, res) => {
     }
 })
 
+app.delete('/groups/:id', async (req, res)=> {
+
+    // ǵet params from body
+    const id = parseInt(req.params.id);
+
+    try{
+
+        // DELETE FROM 'Groups' WHERE id = id
+        const result = await knex('Groups')
+            .where({id})
+            .delete()
+
+        if (result) {
+            res.redirect('/groups')
+        } else {
+            res.status(404).send({success: false, message: 'Group not found.'});
+        }
+
+    }catch (e) {
+        console.log(e)
+        res.status(500).send('ERROR'+ e.message)
+    }
+})
+
+
 app.get('/albums', async (req, res) => {
 
     try {
@@ -89,20 +114,17 @@ app.get('/albums', async (req, res) => {
         res.render('albums', options)
     } catch (e) {
         console.log(e)
-        res.status(500).send('ERROR')
+        res.status(500).send({msg:'ERROR'})
     }
 })
 
-app.delete('/foo',(req, res)=>{
-    console.log('OK')
-    res.send('OK')
-})
+
 app.delete('/albums/:id', async (req, res)=> {
 
     const id = parseInt(req.params.id);
-    console.log('app.put id:',id)
+    console.log('app.delete id:',id)
     try{
-        const album = await knex('Albums').where({id}).first()
+        const album = await knex('Albums').where({id})
         if (!album) {
             res.status(404).send(' Album not found')
         }
@@ -114,12 +136,14 @@ app.delete('/albums/:id', async (req, res)=> {
             .delete()
 
 
+        console.log('result')
+        console.log(result)
         if (result) {
             console.log('TODO OK')
-            res.status(201).redirect('/albums')
+            res.redirect('/albums')
         } else {
             console.log('esto no va')
-            res.status(404).send({success: false, message: 'Group not found.'});
+            res.status(404).send({success: false, message: 'album not found.'});
         }
 
     }catch (e) {
@@ -130,17 +154,23 @@ app.delete('/albums/:id', async (req, res)=> {
 
 app.get('/albums/update/:id', async (req, res) => {
 
-
-    // id should be found . Otherwise an error must be returnd
+    // id should be found . Otherwise an error must be returned
     try {
         const id = req.params.id;
-        const groups = await knex('Groups')
+
+        // Get the actual Album being updated
+        // SELECT 'Albums.id', 'title', 'image', 'idGroup', 'description'
+        // FROM Albums
+        // WHERE Albums.id = id
         const albums = await knex('Albums')
             .select('Albums.id', 'title', 'image', 'idGroup', 'description').where('id', '=', id)
 
+        // Get all Groups in order to make them avilable
+        const groups = await knex('Groups')
+
         const options = {
             title: 'Group List',
-            album: albums[0], // albums is a lost of results
+            album: albums[0], // albums is a list
             groups: groups
         }
         res.render('update_album', options)
