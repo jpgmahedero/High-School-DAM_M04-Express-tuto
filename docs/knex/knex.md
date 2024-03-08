@@ -51,37 +51,12 @@ conts id  = ...
 const album = await knex('Albums').where({id})
 ``` 
 
-## DELETE
-```angular2html
-pp.delete('/groups/:id', async (req, res)=> {
 
-    // ǵet params from body
-    const id = parseInt(req.params.id);
-
-    try{
-        
-        // DELETE FROM TABLE WHERE TABLE.id = id
-        const result = await knex(TABLE)
-            .where({id})
-            .delete()
-        
-        if (result) {
-            res.redirect('/....')
-        } else {
-            res.status(404).send({success: false, message: 'id not found.'});
-        }
-
-    }catch (e) {
-        console.log(e)
-        res.status(500).send('ERROR'+ e.message)
-    }
-})
-```
 
 
 ## DELETE AND UPDATE
 
-### VIEW
+### LIST VIEW
 ```angular2html 
             ...
             ...
@@ -93,7 +68,7 @@ pp.delete('/groups/:id', async (req, res)=> {
     </tbody>
 </table>
 ```
-### DELETE
+### DELETE VIEW
 
 ```angular2html
 <script>
@@ -133,10 +108,36 @@ pp.delete('/groups/:id', async (req, res)=> {
 
 </body>
 ```
+## DELETE ENDPOINT
+```angular2html
+app.delete('/groups/:id', async (req, res)=> {
 
-### UPDATE
-Show update fropm when accessed via GET
-Firs check elemenn to be updated exists
+    // ǵet params from body
+    const id = parseInt(req.params.id);
+
+    try{
+        
+        // DELETE FROM TABLE WHERE TABLE.id = id
+        const result = await knex(TABLE)
+            .where({id})
+            .delete()
+        
+        if (result) {
+            res.redirect('/....')
+        } else {
+            res.status(404).send({success: false, message: 'id not found.'});
+        }
+
+    }catch (e) {
+        console.log(e)
+        res.status(500).send('ERROR'+ e.message)
+    }
+})
+```
+
+### UPDATE ENDPOINTS
+Show update FORM when accessed via GET
+Firs check element to be updated exists.
 Then show updating form
 ```
 app.get('/albums/update/:id', async (req, res) => {
