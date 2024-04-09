@@ -1,7 +1,14 @@
 # Knex SQL QUERY BUILDER
-- [official documentation](https://knexjs.org/guide/    )
-- [how to](https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application)
-- [partials](https://progressivecoder.com/nodejs-templating-using-express-ejs-with-partials/#6-express-ejs-partials)
+- [official documentation](https://knexjs.org/guide/)
+- [initiaconfig](#initial-config)
+- [select all](#select-all)
+- [select by id](#select-by-id)
+- [delete and update](#delete-and-update)
+- [list view](#list-view)
+- [delete view](#delete-view)
+- [delete endpoint](#delete-endpoint)
+- [update endpoints](#update-endpoints)
+ 
 
 ## Initial config
 
@@ -54,7 +61,6 @@ const album = await knex('Albums').where({id})
 
 
 
-## DELETE AND UPDATE
 
 ### LIST VIEW
 ```angular2html 
