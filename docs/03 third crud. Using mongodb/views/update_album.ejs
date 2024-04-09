@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<h1>Web de items</h1>
+<%- include('partials/navigation') %>
+
+
+<h1> UPDATE ALBUM </h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <form action="/albums/update" method="post">
+
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<%= album.title %>">
+
+
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" value="<%= album.image %>">
+
+                <label for="idGroup">Group</label>
+
+                <select name="idGroup">
+                    <% groups.forEach((group)=>{%>
+
+                    <!-- SELECT actual Item ONLY if it's our id -->
+                        <% if (group.id == album.idGroup){ %>
+                            <option value="<%= group.id %>" SELECTED> <%= group.name %> </option>
+                        <% }else{ %>
+                            <option value="<%= group.id %>"><%= group.name %></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" value="<%= album.description %>">
+
+
+                <input type="hidden" name="id" value="<%= album.id %>">
+
+                <input type="submit" value="update">
+            </form>
+        </div>
+        <div class="col"></div>
+
+        <footer>
+            <%- include('partials/footer'); %>
+        </footer>
+
+        <%- include('partials/extra_scripts'); %>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

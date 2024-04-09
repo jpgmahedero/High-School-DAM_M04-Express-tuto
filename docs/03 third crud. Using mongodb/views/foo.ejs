@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+
+<h1> foo Album list</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>group</th>
+        <th>description</th>
+
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% albums.forEach(function(album) { %>
+        <tr>
+            <td><%= album.id %></td>
+            <td><%= album.title %></td>
+            <td><%= album.group %></td>
+            <td><%= album.description %></td>
+
+            <td><a href="/jander" class="delete-link" data-album-id="<%= album.id %>">Delete</a>
+
+                <a href="/albums/update/<%= album.id %>">Update</a></td>
+        </tr>
+    <% }); %>
+
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        console.log('ready 1')
+        $('.delete-link').click( function (e) {
+            e.preventDefault(); // Prevent the default link action
+            var itemId = $(this).data('album-id'); // Get the item ID from the data-item-id attribute
+
+            console.log(this)
+            // Await the completion of the AJAX request
+            $.ajax({
+                url: '/albums/' + itemId, // Your endpoint
+                type: 'DELETE',
+            }).then(function (result) {
+                console.log(result)
+                window.location.reload();
+            })
+                .catch(function (error) {
+                    console.log(error)
+                })
+
+            // Handle success, such as reloading the page or removing the item row from the table
+            //res.status(200).redirect('/')
+
+
+        });
+
+
+    });
+
+</script>
+</body>
+</html>

@@ -24,18 +24,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 
 
-const knex = require('knex')({
-    client: 'sqlite3', // or 'better-sqlite3'
-    connection: {
-        filename: "./db_musica.sqlite"
-    }
-});
+const mongoose = require ('mongoose')
+//import mongoose from 'mongoose'
+
+
+mongoose.connect("mongodb://127.0.0.1:27017/Musica?retryWrites=true&w=majority")
+
+
+
+const Group = require('./models/Group')
+
+
+
 
 
 // WEB ENDPOINTS //////////////////////////
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     const options = {title: ' WEB DE MUSICA'}
-    res.render('index', options) //, options)
+    try {
+        const groups = await Group.find()
+        console.log(groups)
+        res.render('index', options) //, options)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send('ERROR')
+    }
 });
 
 

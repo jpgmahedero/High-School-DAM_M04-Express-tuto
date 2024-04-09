@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head'); %>
+
+</head>
+<body>
+
+<%- include('partials/navigation') %>
+
+
+<h1> Groups list</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% groups.forEach((group)=> { %>
+        <tr>
+            <td><%= group.id %></td>
+            <td><%= group.name %></td>
+            <td><a href="#" class="delete-link" data-group-id="<%= group.id %>">Delete</a>
+                <a href="/groups/update/<%= group.id %>">Update</a></td>
+        </tr>
+    <% }); %>
+
+    </tbody>
+</table>
+<script>
+
+    async  function delete_group(event) {
+        event.preventDefault();
+
+        let groupId = this.getAttribute('data-group-id')
+        var url = '/groups/' + groupId;
+        console.log('ulr' + url)
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE'
+            });
+            window.location.reload();
+
+        } catch (error) {
+            // Handle errors that occur during fetch
+            console.error("Error:", error);
+        }
+    }
+
+    $(document).ready( function (){
+        $('.delete-link').on('click', delete_group);
+    });
+
+</script>
+
+</body>
+</html>

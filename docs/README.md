@@ -21,7 +21,7 @@
   - First CRUD 
 
  
--  [NodeJS + Express part 2: Project Skeleton](Project Skeleton/02_Project_Skeleton.md)
+-  [NodeJS + Express part 2: Project Skeleton]()
    - Installation
    - Generating an Application
    - Install dependencies 
@@ -33,3 +33,4 @@
 - [NodeJS + Express part 4: Knex SQL Builder](knex/knex.md)
     - official documentation
     - how to...
+- [NodeJS + Express part 5: Mongoose](mongodb/mongodb.md)

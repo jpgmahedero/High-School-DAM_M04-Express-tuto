@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+
+<%- include('partials/navigation') %>
+
+
+<h1> Album list</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>image</th>
+        <th>group</th>
+        <th>description</th>
+
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% albums.forEach(function(album) { %>
+        <tr>
+            <td><%= album.id %></td>
+            <td><%= album.title %></td>
+            <td><img src="<%= album.image %>" class="albums_image"></td>
+            <td><%= album.group %></td>
+            <td><%= album.description %></td>
+
+            <td><a href="#" class="delete-link" data-album-id="<%= album.id %>">Delete</a>
+
+                <a href="/albums/update/<%= album.id %>">Update</a></td>
+        </tr>
+    <% }); %>
+
+    </tbody>
+</table>
+<script>
+    /*
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all delete links
+            var deleteLinks = document.querySelectorAll('.delete-link');
+
+            // Attach click event listener to each delete link
+            deleteLinks.forEach(function(link) {
+                link.addEventListener('click', async function(e) {
+                    e.preventDefault(); // Prevent the default link action
+                    e.stopPropagation();
+
+                    // Get the item ID from the data attribute
+                    var albumId = this.getAttribute('data-album-id');
+                    console.log(this)
+                    var url = '/albums/' + albumId;
+                    console.log('ulr'+url)
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'DELETE'
+                        });
+
+                        if (response.ok) {
+                            // Handle success
+                            window.location.reload();
+                        } else {
+                            // Handle HTTP errors
+                            console.error("Error:", response.status, response.statusText);
+                        }
+                    } catch (error) {
+                        // Handle errors that occur during fetch
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+    /*
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Delete clicked for album ID:', this.getAttribute('data-album-id'));
+            });
+        });
+    });
+
+     */
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', async function (e) {
+                e.preventDefault();
+                console.log('Delete clicked for album ID:', this.getAttribute('data-album-id'));
+
+                let albumId = this.getAttribute('data-album-id')
+                var url = '/albums/' + albumId;
+                console.log('ulr' + url)
+                try {
+                    const response = await fetch(url, {
+                        method: 'DELETE'
+                    });
+
+
+                    window.location.reload();
+
+                } catch (error) {
+                    // Handle errors that occur during fetch
+                    console.error("Error:", error);
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
