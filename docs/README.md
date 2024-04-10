@@ -21,7 +21,7 @@
   - First CRUD 
 
  
--  [NodeJS + Express part 2: Project Skeleton]()
+-  [NodeJS + Express part 2: Project Skeleton](Project%20Skeleton/02_Project_Skeleton.md)
    - Installation
    - Generating an Application
    - Install dependencies 
